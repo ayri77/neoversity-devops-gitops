@@ -1,0 +1,43 @@
+replicaCount: 2
+
+image:
+  repository: 487337210313.dkr.ecr.eu-central-1.amazonaws.com/lesson-8-ecr
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8000
+
+ingress:
+  enabled: false
+  className: nginx
+  host: django.example.com
+  path: /
+  pathType: Prefix
+  tls: false
+
+config:
+  ALLOWED_HOSTS: "localhost,127.0.0.1,*"
+  SECRET_KEY: "django-insecure-ftetmmr47w3t9p4u..."
+  DEBUG: "True"
+  POSTGRES_HOST: db
+  POSTGRES_PORT: "5432"
+  POSTGRES_USER: django_user
+  POSTGRES_DB: django_db
+  POSTGRES_PASSWORD: pass9764gd
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 70
