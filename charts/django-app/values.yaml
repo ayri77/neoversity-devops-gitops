@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: 487337210313.dkr.ecr.eu-central-1.amazonaws.com/lesson-8-ecr
-  tag: latest
+  tag: "v1.0.2"
   pullPolicy: IfNotPresent
 
 service:
