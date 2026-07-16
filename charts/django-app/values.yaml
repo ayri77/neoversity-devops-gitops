@@ -21,7 +21,7 @@ ingress:
   tls: false
 
 config:
-  ALLOWED_HOSTS: "*"
+  ALLOWED_HOSTS: "localhost,127.0.0.1,.elb.amazonaws.com,django-app-django,django-app-django.django.svc,django-app-django.django.svc.cluster.local"
   DEBUG: "False"
 
 resources:
